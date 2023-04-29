@@ -5,13 +5,19 @@
  */
 import java.util.Scanner;
 
+import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 /*Пусть (x, y) – координаты центра круга и r – его радиусть
         Пусть (a, b) – координаты точки А. Точка А лежит внутри круга (включая границы)
 (x – a)^2 + (y – b)^2 ≤ r^2 */
 
 public class Main {
-
+    public static boolean circles(double x1, double y1, double r1, double x2, double y2, double r2){
+        //(a1 - a2)^2 + (b1-b2)^2 < (r-r2)^2
+        if((pow((x1-x2), 2) + pow((x1-x2), 2)) < pow((r1-r2), 2))
+            return true;
+        else return false;
+    }
     /* public static boolean ferZ(int x1, int y1, int x2, int y2){
         if((x1 == x2) || (y1 == y2) || ((x1 + y1 == x2 + y2) || (x1 - y1 == x2 - y2)))
             return true;
@@ -30,7 +36,7 @@ public class Main {
         else
             return false;
     }*/
-    public static int colendar (int mes, int god)
+    /* public static int colendar (int mes, int god)
     {
         if ((mes != 2) && ((mes <= 7) && (mes % 2 == 1)) || ((mes > 7) && (mes % 2 ==0)))
             return 31;
@@ -42,10 +48,10 @@ public class Main {
                     return 29;
                 else return 28;
 
-    }
+    }*/
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-      /*  int x, y, r, a, b;
+        /*  int x, y, r, a, b;
         x = in.nextInt();
         y = in.nextInt();
         r = in.nextInt();
@@ -82,14 +88,29 @@ public class Main {
          * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
          * Вернуть число дней в этом месяце этого года по григорианскому календарю.
          */
-        int mes, god;
+        /*int mes, god;
         do{
             System.out.println("Input month (shouLd be more than 0 and less than 13): ");
             mes = in.nextInt();
             System.out.println("Input year (shouLd be more than 0): ");
             god = in.nextInt();
-        }while((mes > 12) || (god <= 0) || (mes < 1));
-        System.out.println(colendar(mes, god));
+        }while((mes > 12) || (god <= 0) || (mes < 1));*/
+        /**
+         * Простая (2 балла)
+         *
+         * Проверить, лежит ли окружность с центром в (x1, y1) и радиусом r1 целиком внутри
+         * окружности с центром в (x2, y2) и радиусом r2.
+         * Вернуть true, если утверждение верно
+         */
+        //(a1 - a2)^2 + (b1-b2)^2 < (r-r2)^2
+        double x1, y1, r1, x2, y2, r2;
+        x1 = in.nextDouble();
+        y1 = in.nextDouble();
+        r1 = in.nextDouble();
+        x2 = in.nextDouble();
+        y2 = in.nextDouble();
+        r2 = in.nextDouble();
+        System.out.println(circles(x1, y1, r1, x2, y2, r2));
     }
 
 }
